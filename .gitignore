@@ -1,0 +1,55 @@
+# Caches and Python compiler files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.venv/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+*.tmp
+
+# Local runtime settings
+settings.yaml
+Ultralytics/
+
+# Project Datasets (Keep raw structure but ignore large local images)
+data/processed/
+data/processed_seg/
+data/raw/images/
+data/raw/annotations/
+data/raw/annotations_seg/
+
+# Large weights and training runs
+runs/
+yolov8n.pt
+yolo11n-seg.pt
+*.onnx
+*.engine
+*.torchscript
+*.tflite
+
+# Ignore all files in weights/ except our custom best.pt weights
+weights/*
+!weights/best.pt
+
+# IDE & OS files
+.idea/
+.vscode/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Output results (images, CSVs)
+outputs/*
+!outputs/.gitkeep

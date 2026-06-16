@@ -1,0 +1,36 @@
+# Coconut tree detection — training configuration
+
+project:
+  name: coconut_tree_detection
+  class_name: coconut_tree
+  num_classes: 1
+
+paths:
+  raw_images: data/raw/images
+  raw_annotations: data/raw/annotations   # COCO JSON or YOLO txt per image
+  dataset_root: data/processed
+  output_dir: runs
+  weights: weights/best.pt
+
+dataset:
+  train_ratio: 0.70
+  val_ratio: 0.20
+  test_ratio: 0.10
+  image_extensions: [".jpg", ".jpeg", ".png", ".tif", ".tiff"]
+
+model:
+  # Start with nano for fast iteration; use yolov8m.pt or yolov8l.pt for production
+  base_weights: yolov8n.pt
+  img_size: 640          # Increase to 1280 if trees are small in frame
+  epochs: 100
+  batch_size: 16         # Reduce if GPU runs out of memory
+  patience: 20           # Early stopping
+  device: 0              # 0 = first GPU, "cpu" for CPU-only
+
+inference:
+  confidence: 0.02       # Lower if trees are missed; raise to reduce false positives
+  iou: 0.45
+  img_size: 1280          # Use 1280 for better small-tree recall, 416/512 for faster CPU inference
+  # For large orthomosaics, split into tiles of this size (pixels)
+  tile_size: 1280
+  tile_overlap: 0.25     # 25% overlap to avoid missing trees at tile edges

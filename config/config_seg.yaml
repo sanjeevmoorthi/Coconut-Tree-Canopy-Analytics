@@ -1,0 +1,35 @@
+# Coconut tree segmentation & tracking configuration
+
+project:
+  name: coconut_tree_segmentation
+  class_name: coconut_tree
+  num_classes: 1
+
+paths:
+  raw_images: data/raw/images
+  raw_annotations: data/raw/annotations       # Original detection boxes
+  seg_annotations: data/raw/annotations_seg   # Generated segmentation polygons
+  dataset_root: data/processed_seg
+  output_dir: runs
+  weights: runs/segment/train/weights/best.pt
+
+dataset:
+  train_ratio: 0.70
+  val_ratio: 0.20
+  test_ratio: 0.10
+  image_extensions: [".jpg", ".jpeg", ".png", ".tif", ".tiff"]
+
+model:
+  base_weights: yolo11n-seg.pt
+  img_size: 640
+  epochs: 100
+  batch_size: 16
+  patience: 20
+  device: 0
+
+inference:
+  confidence: 0.02
+  iou: 0.45
+  img_size: 1280
+  tile_size: 1280
+  tile_overlap: 0.25
