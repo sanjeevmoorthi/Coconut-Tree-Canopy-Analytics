@@ -1,0 +1,17 @@
+settings_version: 0.0.4
+datasets_dir: D:\ESEC DDC\coco\datasets
+weights_dir: weights
+runs_dir: runs
+uuid: 2c194a3ea43a4c34a3d509dec3cd9868496b0b991d09e86e0dbe8c3b61261277
+sync: true
+api_key: ''
+openai_api_key: ''
+clearml: true
+comet: true
+dvc: true
+hub: true
+mlflow: true
+neptune: true
+raytune: true
+tensorboard: true
+wandb: true
